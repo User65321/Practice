@@ -1,8 +1,6 @@
 package com.example.sample;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ManagementController {
 
-	private Map<Integer,String>book=new HashMap<>();
+	@Autowired
+	public bookService manager;
+	
 	
 	//ここから登録
 	@GetMapping("/")
@@ -22,8 +22,7 @@ public class ManagementController {
 	
 	@PostMapping("/")
 	public String bookRegister(ModelMap modelMap,@RequestParam("Number") Integer Number,@RequestParam("Name")String Name) {
-		book.put(Number, Name);
-		modelMap.addAttribute("message","「"+Number+"/"+Name+"」を登録しました。");
+		manager.bookRegister(modelMap, Number, Name);
 		return "bookRegister";
 	}
 	
@@ -34,21 +33,14 @@ public class ManagementController {
 		}
 		@PostMapping("bookSearch")
 		public String bookSearch(ModelMap modelMap,@RequestParam("Number")Integer Number) {
-			String Name=book.get(Number);
-			String result;
-			if(Name!=null) {
-				result="「"+Number+"の検索結果は"+Name+"」です";
-			}else {
-				result="「"+Number+"は登録されていません";
-			}
-			modelMap.addAttribute("result",result);
+			manager.bookSearch(modelMap, Number);
 			return "bookSearch";
 		}
 		
 		//ここから一覧
 		@GetMapping("bookList")
 		public String bookList(ModelMap modelMap) {
-			modelMap.addAttribute("book",book);
+			manager.bookList(modelMap);
 			return "bookList";
 		}
 	
