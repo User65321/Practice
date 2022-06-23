@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>名簿管理</title>
+	<meta charset="UTF-8">
+	<style>
+	body {
+		text-align:center;
+  padding: 1rem 2rem;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+}
+
+  .bg_dot{
+  background-color: #fff;
+  background-image:
+    radial-gradient(#7bded9 30%, transparent 30%);
+  background-size: 20px 20px;
+}
+</style>
+</head>
+<body>
+	
+
+<h2>登録</h2>
+
+<p th:if="${message!=null}" th:text="${message}">メッセージ</p>
+
+<form method="post">
+
+	社員番号：<input type="text" name="Number">
+	 お名前：<input type="text" name="Name"><br><br>
+	<button type="submit">登録</button>
+</form>
+
+<a href="bookSearch">検索</a><br>
+</body>
+
+</html>

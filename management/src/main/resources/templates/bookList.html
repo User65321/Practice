@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>名簿管理</title>
+	<style>
+	body {
+		text-align:center;
+  padding: 1rem 2rem;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+}
+
+  .bg_dot{
+  background-color: #fff;
+  background-image:
+    radial-gradient(#7bded9 30%, transparent 30%);
+  background-size: 20px 20px;
+}
+</style>
+</head>
+<body>
+<h2>一覧</h2>
+<table>
+	<tr>
+		<th>社員番号</th>
+		<th>名前</th>
+	</tr>
+	
+	<tr th:each="Number:${book.keySet()}">
+		<td th:text="${Number}">社員番号</td>
+		<td　th:text="${book.get(Number)}">名前</td>
+	</tr>
+</table>
+
+<a href="/">登録</a><br>
+<a href="bookSearch">検索</a>
+</body>
+</html>
