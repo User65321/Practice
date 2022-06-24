@@ -28,14 +28,19 @@
 
 <p th:if="${message!=null}" th:text="${message}">メッセージ</p>
 
+
 <form method="post">
 
+<div align="center">
+			<p th:text="${errorMessage}" style="color: red"></p>
+		</div>
 	社員番号：<input type="text" name="Number">
 	 お名前：<input type="text" name="Name"><br><br>
 	<button type="submit">登録</button>
 </form>
 
 <a href="bookSearch">検索</a><br>
+<a href="bookDelete">削除</a><br>
 </body>
 
 </html>

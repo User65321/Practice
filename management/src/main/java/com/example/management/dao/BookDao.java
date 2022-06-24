@@ -22,4 +22,9 @@ public Map<Integer,String>book=new HashMap<>();
 		return book;
 	}
 	
+	//削除処理
+	public Map<Integer, String> bookDelete(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+		book.remove(Number);
+		return book;
+	}
 }

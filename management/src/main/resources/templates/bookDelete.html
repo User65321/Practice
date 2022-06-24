@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>検索画面</title>
+	<title>削除画面</title>
 		<style>
 	body {
 		text-align:center;
@@ -22,18 +22,19 @@
 </head>
 
 <body>
-<p th:if="${result != null}" th:text="${result}">メッセージ</p>
+<p th:if="${Dresult != null}" th:text="${Dresult}">メッセージ</p>
 
-<h2>検索</h2>
+<h2>削除</h2>
 <form  method="post">
 社員番号：<input name="Number"><br><br>
 
-<button type="submit">検索結果</button>
+<button type="submit">削除結果</button>
 
 </form>
 
 <a href="/">登録</a><br>
-<a href="bookList">一覧</a>
+<a href="bookSearch">検索</a><br>
+
 </body>
 
 </html>

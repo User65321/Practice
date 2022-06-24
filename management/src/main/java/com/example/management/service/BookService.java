@@ -13,9 +13,10 @@ public class BookService {
 	
 	//登録処理
 	public void Register(ModelMap modelMap,@RequestParam("Number") Integer Number,@RequestParam("Name")String Name) {
-		this.Number=Number;
-		this.Name=Name;
-		modelMap.addAttribute("message","「"+Number+"/"+Name+"」を登録しました。");
+			this.Number=Number;
+			this.Name=Name;
+			modelMap.addAttribute("message","社員番号「"+Number+"」で「"+Name+"」を登録しました。");
+			
 		
 	}
 		
@@ -24,12 +25,23 @@ public class BookService {
 		this.Number=Number;
 		String result;
 		if(Name!=null) {
-			result="「"+Number+"の検索結果は"+Name+"」です";
+			result="社員番号「"+Number+"」の検索結果は「"+Name+"」です";
 		}else {
-			result="「"+Number+"は登録されていません";
+			result="「"+Number+"」は登録されていません";
 		}
 		modelMap.addAttribute("result",result);
 	}
 	
+	//削除処理
+	public void Delete(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+		this.Number=Number;
+		String Dresult;
+		if(Name!=null) {
+			Dresult="社員番号:「"+Number+"」は存在しません」";
+		}else {
+			Dresult="社員番号:「"+Number+"」を削除しました。";
+		}
+		modelMap.addAttribute("Dresult",Dresult);
+	}
 
 }

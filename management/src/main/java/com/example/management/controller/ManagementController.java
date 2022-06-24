@@ -41,6 +41,19 @@ public class ManagementController {
 			return "bookSearch";
 		}
 		
+		//ここから削除
+		@GetMapping("bookDelete")
+		public String bookDelete() {
+			return "bookDelete";
+		}
+		@PostMapping("bookDelete")
+		public String bookDelete(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+			manager.Delete(modelMap, Number);
+			return "bookDelete";
+		}
+		
+}
+		
 //		//ここから一覧
 //		@GetMapping("bookList")
 //		public String bookList(ModelMap modelMap) {
@@ -48,4 +61,3 @@ public class ManagementController {
 //			return "bookList";
 //		}
 	
-}
