@@ -1,30 +1,37 @@
 package com.example.management.controller;
 
-import lombok.Data;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-@Data
+
 public class PersonForm {
 
-private Integer Number;
+
+	   @Size(min = 1, max = 3)
+	   private String Number;
 	
-	private String Name;
+	   @NotEmpty
+	   private String Name;
 	
-	public String result;
+	 public String result;
 
 	
-	public Integer getNumber() {
-		return Number;
+	
+
+	public void setNumber(String Number) {
+		this.Number = Number;
 	}
-
-	public void setNumber(Integer number) {
-		Number = number;
+	
+	public String getNumber() {
+		return Number;
 	}
 
 	public String getName() {
 		return Name;
 	}
 
-	public void setName(String name) {
-		Name = name;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
+	
 }

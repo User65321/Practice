@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Repository
 public class BookDao {
 
-public Map<Integer,String>book=new HashMap<>();
+public Map<String,String>book=new HashMap<>();
 	
 //登録処理
-	public void bookRegister(ModelMap modelMap,@RequestParam("Number") Integer Number,@RequestParam("Name")String Name){
+	public void bookRegister(ModelMap modelMap,@RequestParam("Number") String Number,@RequestParam("Name")String Name){
 		book.put(Number, Name);
 	}
 	//検索処理
-	public Map<Integer, String> bookSearch(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+	public Map<String, String> bookSearch(ModelMap modelMap,@RequestParam("Number")String Number) {
 		book.get(Number);
 		return book;
 	}
 	
 	//削除処理
-	public Map<Integer, String> bookDelete(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+	public Map<String, String> bookDelete(ModelMap modelMap,@RequestParam("Number")String Number) {
 		book.remove(Number);
 		return book;
 	}

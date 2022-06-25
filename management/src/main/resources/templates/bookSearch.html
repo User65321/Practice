@@ -26,8 +26,9 @@
 
 <h2>検索</h2>
 <form  method="post">
-社員番号：<input name="Number"><br><br>
 
+社員番号：<input type="text" name="Number"><br><br>
+<!--<p th:if="${#fields.hasErrors(Number)}"  th:errors="Number"></p>-->
 <button type="submit">検索結果</button>
 
 </form>

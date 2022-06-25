@@ -1,9 +1,13 @@
 package com.example.management.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +29,7 @@ public class ManagementController {
 	}
 	
 	@PostMapping("/")
-	public String bookRegister(ModelMap modelMap,@RequestParam("Number") Integer Number,@RequestParam("Name")String Name) {
+	public String bookRegister(ModelMap modelMap,@RequestParam("Number") String Number,@RequestParam("Name")String Name) {
 		manager.Register(modelMap, Number, Name);
 		return "bookRegister";
 	}
@@ -36,7 +40,13 @@ public class ManagementController {
 			return "bookSearch";
 		}
 		@PostMapping("bookSearch")
-		public String bookSearch(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+		public String bookSearch(@ModelAttribute @Valid  PersonForm personForm,BindingResult bindingResult,ModelMap modelMap,@RequestParam("Number")String Number) {
+			
+//			if(bindingResult.hasErrors()) {
+//				return "bookError";
+//			} 
+			
+			
 			manager.Search(modelMap, Number);
 			return "bookSearch";
 		}
@@ -47,7 +57,7 @@ public class ManagementController {
 			return "bookDelete";
 		}
 		@PostMapping("bookDelete")
-		public String bookDelete(ModelMap modelMap,@RequestParam("Number")Integer Number) {
+		public String bookDelete(ModelMap modelMap,@RequestParam("Number")String Number) {
 			manager.Delete(modelMap, Number);
 			return "bookDelete";
 		}
