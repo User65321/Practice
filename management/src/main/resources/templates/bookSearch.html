@@ -18,6 +18,26 @@
     radial-gradient(#7bded9 30%, transparent 30%);
   background-size: 20px 20px;
 }
+input[type="submit"]{
+	background: #FF6701;
+	border: none;
+	color: #fff;
+	font-size:15px;
+	font-weight:bold;
+	padding: 10px 20px;
+	margin: 0 10px;
+	border-radius: 10px;
+}
+input[type="reset"]{
+	background: #aaa;
+	border: none;
+	color: #fff;
+	font-size:15px;
+	font-weight:bold;
+	padding: 10px 20px;
+	margin: 0 10px;
+	border-radius: 10px;
+}
 </style>
 </head>
 
@@ -28,14 +48,14 @@
 <form  method="post" name="SearchForm">
 
 社員ID：<input type="text" name="ID"><br><br>
-<!--<p th:if="${#fields.hasErrors(Number)}"  th:errors="Number"></p>-->
-<input type="submit"  value="検索" onClick="return NonCheck();" >
-<input type="reset">
 
+<div class="btn">
+	<input type="submit"  value="検索" onClick="return NonCheck();" >
+	<input type="reset">
+</div>
 </form>
 
 <a href="/">登録</a><br>
-<!--<a href="bookDelete">削除</a><br>-->
 
 <!--未入力のチェック処理-->
 <script type="text/javascript">
