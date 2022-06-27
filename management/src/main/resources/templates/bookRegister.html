@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html　xmlns:th="http://www.thymeleaf.org">
 
-<head>
+<head>  
 
+
+
+
+             
 <title>名簿管理</title>
 	<meta charset="UTF-8">
 	<style>
@@ -19,7 +23,10 @@
     radial-gradient(#7bded9 30%, transparent 30%);
   background-size: 20px 20px;
 }
+
 </style>
+
+
 </head>
 <body>
 	
@@ -29,18 +36,49 @@
 <p th:if="${message!=null}" th:text="${message}">メッセージ</p>
 
 
-<form method="post">
+<form method="post" name="registerForm">
 
-<div align="center">
-			<p th:text="${errorMessage}" style="color: red"></p>
-		</div>
-	社員番号：<input type="text" name="Number">
-	 お名前：<input type="text" name="Name"><br><br>
-	<button type="submit">登録</button>
+
+	社員ID：<input type="text" name="ID">
+	 お名前：<input type="text" name="Name"><br>
+	 <br>
+	<input type="submit"　value="登録" onClick="return NonCheck();">
+	<input type="reset">
 </form>
 
+
+
+
 <a href="bookSearch">検索</a><br>
-<a href="bookDelete">削除</a><br>
+<!--<a href="bookList">一覧表示</a><br>
+<a href="bookDelete">削除</a>-->
+
+
+
+<script type="text/javascript">
+
+	//未入力のチェック
+	function NonCheck(){
+		if (registerForm.ID.value == ""){
+	
+    	//条件に一致する場合(社員IDが空の場合)
+    	alert("社員IDを入力してください");
+    	//送信ボタン本来の動作をキャンセルします
+   		return false;	
+    
+    	}else if(registerForm.Name.value == ""){
+		//条件に一致する場合(名前が空の場合)
+		alert("名前を入力してください");
+		//送信ボタン本来の動作をキャンセルします
+    	return false;
+    
+    	}else{
+	 	//送信ボタン本来の動作を実行します
+     	return true;
+     	}
+     	}
+</script>
+
 </body>
 
 </html>

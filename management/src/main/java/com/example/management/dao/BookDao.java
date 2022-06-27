@@ -12,19 +12,13 @@ public class BookDao {
 
 public Map<String,String>book=new HashMap<>();
 	
-//登録処理
-	public void bookRegister(ModelMap modelMap,@RequestParam("Number") String Number,@RequestParam("Name")String Name){
-		book.put(Number, Name);
+	//登録処理
+	public void bookRegister(ModelMap modelMap,@RequestParam("ID") String ID,@RequestParam("Name")String Name){
+		book.put(ID, Name);
 	}
 	//検索処理
-	public Map<String, String> bookSearch(ModelMap modelMap,@RequestParam("Number")String Number) {
-		book.get(Number);
-		return book;
-	}
-	
-	//削除処理
-	public Map<String, String> bookDelete(ModelMap modelMap,@RequestParam("Number")String Number) {
-		book.remove(Number);
+	public Map<String, String> bookSearch(ModelMap modelMap,@RequestParam("ID")String ID) {
+		book.get(ID);
 		return book;
 	}
 }

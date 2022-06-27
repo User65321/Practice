@@ -1,13 +1,9 @@
 package com.example.management.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,8 +12,6 @@ import com.example.management.service.BookService;
 @Controller
 public class ManagementController {
 
-//	@Autowired
-//	public PersonForm personForm;
 	@Autowired
 	public BookService manager;
 	
@@ -29,8 +23,10 @@ public class ManagementController {
 	}
 	
 	@PostMapping("/")
-	public String bookRegister(ModelMap modelMap,@RequestParam("Number") String Number,@RequestParam("Name")String Name) {
-		manager.Register(modelMap, Number, Name);
+	public String bookRegister(ModelMap modelMap,@RequestParam("ID") String ID,@RequestParam("Name")String Name) {
+		manager.Register(modelMap, ID, Name);
+		
+		
 		return "bookRegister";
 	}
 	
@@ -40,34 +36,12 @@ public class ManagementController {
 			return "bookSearch";
 		}
 		@PostMapping("bookSearch")
-		public String bookSearch(@ModelAttribute @Valid  PersonForm personForm,BindingResult bindingResult,ModelMap modelMap,@RequestParam("Number")String Number) {
+		public String bookSearch(ModelMap modelMap,@RequestParam("ID")String ID) {
 			
-//			if(bindingResult.hasErrors()) {
-//				return "bookError";
-//			} 
-			
-			
-			manager.Search(modelMap, Number);
+			manager.Search(modelMap, ID);
 			return "bookSearch";
-		}
-		
-		//ここから削除
-		@GetMapping("bookDelete")
-		public String bookDelete() {
-			return "bookDelete";
-		}
-		@PostMapping("bookDelete")
-		public String bookDelete(ModelMap modelMap,@RequestParam("Number")String Number) {
-			manager.Delete(modelMap, Number);
-			return "bookDelete";
 		}
 		
 }
 		
-//		//ここから一覧
-//		@GetMapping("bookList")
-//		public String bookList(ModelMap modelMap) {
-//			manager.List(modelMap);
-//			return "bookList";
-//		}
 	

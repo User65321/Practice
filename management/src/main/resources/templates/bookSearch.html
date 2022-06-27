@@ -25,16 +25,38 @@
 <p th:if="${result != null}" th:text="${result}">メッセージ</p>
 
 <h2>検索</h2>
-<form  method="post">
+<form  method="post" name="SearchForm">
 
-社員番号：<input type="text" name="Number"><br><br>
+社員ID：<input type="text" name="ID"><br><br>
 <!--<p th:if="${#fields.hasErrors(Number)}"  th:errors="Number"></p>-->
-<button type="submit">検索結果</button>
+<input type="submit"  value="検索" onClick="return NonCheck();" >
+<input type="reset">
 
 </form>
 
 <a href="/">登録</a><br>
-<a href="bookDelete">削除</a><br>
+<!--<a href="bookDelete">削除</a><br>-->
+
+<!--未入力のチェック処理-->
+<script type="text/javascript">
+
+	//未入力のチェック
+	function NonCheck(){
+		if (SearchForm.ID.value == ""){
+	
+    	//条件に一致する場合(社員IDが空の場合)
+    	//エラーメッセージを出力
+    	alert("社員IDを入力してください");
+    	//送信ボタン本来の動作をキャンセルします
+   		return false;	
+    
+    	}else{
+	 	//条件に一致しない場合(名前が入力されている場合)
+	 	//送信ボタン本来の動作を実行します
+     	return true;
+     	}
+     	}
+</script>
 
 </body>
 

@@ -13,42 +13,32 @@ public class BookService {
 	@Autowired
 	public BookDao bookDao;
 	
-	public String Number;
+	public String ID;
 	public String Name;
 	
 	//登録処理
-	public void Register(ModelMap modelMap,@RequestParam("Number") String Number,@RequestParam("Name")String Name) {
-			this.Number=Number;
+	public void Register(ModelMap modelMap,@RequestParam("ID") String ID,@RequestParam("Name")String Name) {
+			this.ID=ID;
 			this.Name=Name;
-			modelMap.addAttribute("message","社員番号「"+Number+"」で「"+Name+"」を登録しました。");
-			bookDao.bookRegister(modelMap, Name, Name);
+			
+			bookDao.bookRegister(modelMap, ID, Name);
+			modelMap.addAttribute("message","社員ID「"+ID+"」で「"+Name+"」を登録しました。");
+			
 		
 	}
 		
 		//検索処理
-	public void Search(ModelMap modelMap,@RequestParam("Number")String Number) {
-		this.Number=Number;
+	public void Search(ModelMap modelMap,@RequestParam("ID")String ID) {
+		this.ID=ID;
 		String result;
+		
+		bookDao.bookSearch(modelMap, Name);
 		if(Name!=null) {
-			result="社員番号「"+Number+"」の検索結果は「"+Name+"」です";
+			result="社員ID；「"+ID+"」の検索結果は「"+Name+"」です";
 		}else {
-			result="「"+Number+"」は登録されていません";
+			result="「"+ID+"」は登録されていません";
 		}
 		modelMap.addAttribute("result",result);
-		bookDao.bookSearch(modelMap, Number);
-	}
-	
-	//削除処理
-	public void Delete(ModelMap modelMap,@RequestParam("Number")String Number) {
-		this.Number=Number;
-		String Dresult;
-		if(Number!=null) {
-			Dresult="社員番号:「"+Number+"」を削除しました。";
-		}else {
-			Dresult="社員番号:「"+Number+"」は存在しません」";
-		}
-		modelMap.addAttribute("Dresult",Dresult);
-		bookDao.bookDelete(modelMap, Number);
 	}
 
 }
