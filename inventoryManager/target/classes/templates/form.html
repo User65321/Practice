@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>一覧</title>
+<style>
+	div.mb-3{
+		    display:block;
+		    text-align: center;
+	}
+
+	
+	table{
+		    margin:auto;
+	}
+	
+	div.validate{
+		text-align: center;
+		color:crimson;
+	}
+</style>
+
+<!--
+<script>
+
+function check(){
+	//書籍名のnullチェック
+	if(document.form.book.value==""){
+		window.alert("書籍名の値が未入力です")
+		return false;
+	//価格のnullチェック
+	}else if(document.form.price.value==""){
+		window.alert("価格の値が未入力です")
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>  -->
+
+
+</head>
+<body>
+<a href="/">一覧表示</a>
+  <form method="post" action="/create" th:object="${inventory}">
+  
+    <!--<input type="text" class="form-control" name="id" th:value="*{id}">-->
+    <input type="hidden" name="id" th:value="*{id}"> 
+      
+    <div class="mb-3">
+      <label for="book" class="form-label">書籍名</label>
+      <input type="text" class="form-control" name="book" th:value="*{book}" required>
+    </div>
+    
+     <!--<div class="validate" th:if="${#fields.hasErrors('book')}" th:errors="*{book)"></div>
+-->
+    
+   <div class="mb-3">
+      <label for="price" class="form-label">価格</label>
+      <input type="text" class="form-control" name="price" th:values="*{price}" required/>
+   </div>
+   
+    <div class="mb-3">
+    <input type="submit"  class="btn btn-primary" value="Create"/>
+    </div>
+  </form>
+
+  
+</body>
+</html>
