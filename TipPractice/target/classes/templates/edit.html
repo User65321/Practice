@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>一覧</title>
+<style>
+
+	.contact {
+	  width: 960px;/*横幅*/
+	  margin: 0 auto;/*中央寄せ*/
+	  padding: 60px 0;
+	}
+	div.mb-3{
+		display:block;
+		text-align: center;
+	}
+
+</style>
+
+</head>
+<body>
+<a href="/">一覧表示</a>
+<div class="contact">
+
+  <form method="post" action="/update" th:object="${tip}">
+ 
+    <input type="hidden" name="id" th:value="*{id}"> 
+      
+    <div class="mb-3">
+      <label for="title" class="form-label">タイトル</label>
+      <input type="text" class="form-control" name="title" th:value="*{title}" required>
+    </div>
+    
+    <div class="mb-3">
+      <label for="overview" class="form-label">概要</label>
+      <input type="text" class="form-control" name="overview" th:value="*{overview}" required>
+    </div>
+   
+    <div class="mb-3">
+      <label for="content" class="form-label">内容</label>
+      <textarea rows="10" cols="60" class="form-control" name="content" th:values="*{content}">内容を入力してください</textarea>
+    </div>
+   
+    <div class="mb-3">
+    <input type="submit"  class="btn btn-primary" value="Update"/>
+    </div>
+  </form>
+  
+  <div>
+  
+  </body>
+</html>
