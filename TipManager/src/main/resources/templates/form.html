@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>一覧</title>
+<style>
+.background_test {
+    background: linear-gradient(-20deg, rgb(169, 169, 169) 20%, rgb(254, 255, 255) 100%);
+    height:100vh;
+}
+div.mb-3{
+	    display:block;
+	    text-align: center;
+}
+	
+label{
+    display: inline-block;
+    text-align: right;
+    width: 70px;
+}
+
+	table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 900px;
+  height:450px;
+  table-layout: fixed;
+  text-align:center;
+  border-right: none !important;
+  border-left: none !important;
+}
+
+
+
+</style>
+
+</head>
+<body class="background_test">
+<a href="/">一覧表示</a>
+  <form method="post" action="/create" th:object="${tip}"　style="margin: 40px;">
+
+    <input type="hidden" name="id" th:value="*{id}"　> 
+      
+   <div class="mb-3">
+      <label for="title" class="form-label" >タイトル</label>
+      <input type="text" class="form-control" name="title" th:value="*{title}" style="width:40%; height:20px;">
+    </div>
+    
+    <br>
+    
+    <div class="mb-3">
+      <label for="overview" class="form-label">概要</label>
+      <input type="text" class="form-control" name="overview" th:value="*{overview}" style="width:40%; height:20px;">
+    </div>
+    
+    <br>
+    
+    <div class="mb-3">
+      <label for="content" class="form-label" >内容</label>
+      <!--<textarea style="width:40%; height:200px;" class="form-control" name="content" th:value="*{content}"></textarea>-->
+    <textarea name="content" class="form-control"  id="contact" cols="77" rows="10" wrap="hard" th:value="*{content}"></textarea>
+    </div>
+    
+    <br>
+    
+    <div class="mb-3">
+	<label for="url">URL</label>
+	<input type="url" name="url" placeholder="https://example.com" pattern="https://.*" size="30"  style="width:40%; height:20px;">
+    </div>
+    
+    <br>
+    
+	<div class="mb-3">
+      <label for="comment" class="form-label">コメント</label>
+      <textarea style="width:40%; height:80px;" class="form-control" name="comment" th:value="*{comment}"　placeholder="コメントを記載してください"></textarea>
+    </div>
+   
+   <br>
+   
+    <div class="mb-3">
+    <input type="submit"  class="btn btn-primary" value="Create" style="width:8%; height:30px;">
+    </div>
+  </form>
+
+  
+</body>
+</html>
